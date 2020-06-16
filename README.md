@@ -9,4 +9,8 @@ GitHub的使用流程：
 6. 使用git add 将修改后文件保存在本地仓库。
 7. 使用git commit -m命令设置注释
 8. 使用git push命令将本地项目更新提交到github。
+先git clone +链接
+每次编辑完都需要 git add +文件名 
+然后再git commit -m "注释"
+再git push origin master
 建议：学习通平台的投屏分辨率较低，有些小字看不清，以及网络不稳定，如果可以希望老师考虑更换直播平台。
