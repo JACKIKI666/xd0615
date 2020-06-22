@@ -14,17 +14,17 @@ int inall,in[100],i,j;
 void setup()
 {
   Serial.begin(9600);
-  pinMode(IN1, OUTPUT);//杈撳叆1
-  pinMode(IN2, OUTPUT);//杈撳叆2
-  pinMode(IN3, OUTPUT);//杈撳叆3
-  pinMode(IN4, OUTPUT);//杈撳叆4
-  pinMode(S1, OUTPUT);//鐗囬€?
-  pinMode(S2, OUTPUT);//鐗囬€?
-  pinMode(S3, OUTPUT);//鐗囬€?
-  pinMode(S4, OUTPUT);//鐗囬€?
+  pinMode(IN1, OUTPUT);//输入1
+  pinMode(IN2, OUTPUT);//输入2
+  pinMode(IN3, OUTPUT);//输入3
+  pinMode(IN4, OUTPUT);//输入4
+  pinMode(S1, OUTPUT);//片选1
+  pinMode(S2, OUTPUT);//片选2
+  pinMode(S3, OUTPUT);//片选3
+  pinMode(S4, OUTPUT);//片选4
   
-  pinMode(LT,OUTPUT);//娴嬭瘯
-  pinMode(BT,OUTPUT);//娑堥殣
+  pinMode(LT,OUTPUT);//测试
+  pinMode(BT,OUTPUT);//消隐
   
   digitalWrite(LT,HIGH);
   digitalWrite(BT,HIGH);
@@ -39,18 +39,15 @@ void loop()
 {
   if(Serial.available()>0)
   {
-    for(i=0;;i++)
+    for(i=0;i<30;i++)
       {
         in[i]=Serial.read();
         delay(10);
-        if(in[i]==0)
-          {
-             break;
-          }
-        in[i]=in[i]-'0';
-       }
-    for(j=0;j<=i-4;j++)
+        in[i]=in[i]-'0';       
+      }
+    for(j=0;in[j+3]>=0&&in[j+3]<=9;j++)
     {
+    
     digitalWrite(S1,LOW);
     digitalWrite(S2,LOW);
     digitalWrite(S3,LOW);
@@ -75,7 +72,7 @@ void loop()
     digitalWrite(IN3,in[j+3]>>2&0x1);
     digitalWrite(IN4,in[j+3]>>3&0x1);
     digitalWrite(S4,HIGH);
-      delay(1000);
-    }  
+    delay(1000);
+    } 
    }
 }
